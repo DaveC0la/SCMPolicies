@@ -1,0 +1,9 @@
+iptables -j DROP -A OUTPUT -s 192.168.1.0 -i eth0 
+iptables -s 203.0.113.0/24 -A INPUT-j DROP  
+iptables -A INPUT -s 192.168.1.0/255.255.255.0 -j DROP  
+iptables -m iprange --src-range 192.168.1.0-192.168.1.6 -A INPUT -j DROP  
+iptables -A INPUT -s 192.168.1.1,192.168.1.2,192.168.1.0/255.255.255.0,192.168.1.0/24 -j DROP  
+iptables -A INPUT -j ACCEPT --ctstate NEW,ESTABLISHED ! --dport 80
+iptables -A INPUT -m multiport --dports 10,20,30 --ctstate NEW,ESTABLISHED -j ACCEPT  
+iptables -A INPUT ! -m multiport --dports 10:20 -j ACCEPT --ctstate NEW,ESTABLISHED
+iptables -A INPUT -s 10.0.0.1 --connbytes 504857:504860 --sport 3128

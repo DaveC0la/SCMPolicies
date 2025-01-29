@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<policy nsfName="XFRM" ipSecAction="add" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="language_XFRM.xsd">
+
+    <rule id="0" ruleType="SecurityAssociation">
+        <ipSecRuleTypeActionCapability>
+            <ipSecAction>delete</ipSecAction>
+        </ipSecRuleTypeActionCapability>
+        <ipDestinationAddressConditionCapability operator="exactMatch">
+            <capabilityIpValue>
+                <exactMatch>192.168.1.1</exactMatch>
+            </capabilityIpValue>
+        </ipDestinationAddressConditionCapability>
+        <ipSourceAddressConditionCapability operator="rangeCIDR">
+            <capabilityIpValue>
+                <rangeCIDR>
+                    <address>192.168.1.2</address>
+                    <maskCIDR>24</maskCIDR>
+                </rangeCIDR>
+            </capabilityIpValue>
+        </ipSourceAddressConditionCapability>
+        <ipProtocolTypeConditionCapability operator="union">
+            <capabilityValue>
+                <union>
+                    <elementValue>esp</elementValue>
+                    <elementValue>ah</elementValue>
+                </union>
+            </capabilityValue>
+        </ipProtocolTypeConditionCapability>
+        <policySpiConditionCapability>
+            <spi>0x100</spi>
+        </policySpiConditionCapability>
+        <encryptionTechniqueActionCapability>
+            <encTechniqueAlgo>aes128</encTechniqueAlgo>
+            <key>0x00112233445566778899AABBCCDDEEFF</key>
+        </encryptionTechniqueActionCapability>
+    </rule>
+
+    <rule id="1" ruleType="SecurityAssociation">
+        <ipSourceAddressConditionCapability>
+            <ipAddress>
+                <address>192.168.1.1</address>
+            </ipAddress>
+        </ipSourceAddressConditionCapability>
+        <ipDestinationAddressConditionCapability>
+            <ipAddress>
+                <address>192.168.1.2</address>
+            </ipAddress>
+        </ipDestinationAddressConditionCapability>
+        <ipProtocolTypeConditionCapability>
+            <protocolType>
+                <protocolTypeName>ESP</protocolTypeName>
+            </protocolType>
+        </ipProtocolTypeConditionCapability>
+        <policySpiConditionCapability>
+            <spi>0x00000301</spi>
+        </policySpiConditionCapability>
+        <packetEncapsulationActionCapability>
+            <mode>tunnel</mode>
+        </packetEncapsulationActionCapability>
+        <connmarkConditionCapability>
+            <value>7</value>
+        </connmarkConditionCapability>
+        <dataAuthenticationActionCapability>
+            <authAlgoMode>
+                <algoHash>sha256</algoHash>
+            </authAlgoMode>
+            <key>0x6351665468576D5A7134743777217A25432A462D4A614E645267556B586E3272</key>
+        </dataAuthenticationActionCapability>
+        <encryptionTechniqueActionCapability>
+            <encTechniqueAlgo>aes128</encTechniqueAlgo>
+            <key>0x00112233445566778899AABBCCDDEEFF</key>
+        </encryptionTechniqueActionCapability>
+    </rule>
+
+    <rule id="2" ruleType="SecurityPolicy">
+        <ipSourceAddressConditionCapability>
+            <ipAddress>
+                <address>172.16.2.0</address>
+            </ipAddress>
+        </ipSourceAddressConditionCapability>
+        <ipDestinationAddressConditionCapability>
+            <ipAddress>
+                <address>172.16.1.0</address>
+            </ipAddress>
+        </ipDestinationAddressConditionCapability>
+        <policyDirConditionCapability>
+            <dir>fwd</dir>
+        </policyDirConditionCapability>
+        <policyTypeConditionCapability>
+            <type>main</type>
+        </policyTypeConditionCapability>
+        <ipProtocolTypeConditionCapability>
+            <protocolType>
+                <protocolTypeName>ESP</protocolTypeName>
+            </protocolType>
+        </ipProtocolTypeConditionCapability>
+        <packetEncapsulationActionCapability>
+            <mode>tunnel</mode>
+        </packetEncapsulationActionCapability>
+        <connmarkConditionCapability>
+            <value>7</value>
+            <mask>0xffffffff</mask>
+        </connmarkConditionCapability>
+    </rule>
+
+    <rule id="3" ruleType="SecurityAssociation">
+        <ipSourceAddressConditionCapability>
+            <ipAddress>
+                <address>192.168.211.138</address>
+            </ipAddress>
+        </ipSourceAddressConditionCapability>
+        <ipDestinationAddressConditionCapability>
+            <ipAddress>
+                <address>192.168.245.130</address>
+            </ipAddress>
+        </ipDestinationAddressConditionCapability>
+        <ipProtocolTypeConditionCapability>
+            <protocolType>
+                <protocolTypeName>ESP</protocolTypeName>
+            </protocolType>
+        </ipProtocolTypeConditionCapability>
+        <policySpiConditionCapability>
+            <spi>0x53fa0fdd</spi>
+        </policySpiConditionCapability>
+        <packetEncapsulationActionCapability>
+            <mode>transport</mode>
+        </packetEncapsulationActionCapability>
+        <policyReqidConditionCapability>
+            <reqID>16386</reqID>
+        </policyReqidConditionCapability>
+        <replayWindowConditionCapability>
+            <size>32</size>
+        </replayWindowConditionCapability>
+        <dataAuthenticationActionCapability>
+            <authAlgoMode>
+                <mode>hmac</mode>
+                <algoHash>sha1</algoHash>
+            </authAlgoMode>
+            <key>0x55f01ac07e15e437115dde0aedd18a822ba9f81e</key>
+        </dataAuthenticationActionCapability>
+        <encryptionTechniqueActionCapability>
+            <encTechniqueAlgo>aes128</encTechniqueAlgo>
+            <encTechniqueMode>cbc</encTechniqueMode>
+            <key>0x6aed4975adf006d65c76f63923a6265b</key>
+        </encryptionTechniqueActionCapability>
+    </rule>
+
+    <rule id="4" ruleType="SecurityPolicy">
+        <ipSourceAddressConditionCapability>
+            <ipAddress>
+                <address>192.168.211.138</address>
+            </ipAddress>
+        </ipSourceAddressConditionCapability>
+        <ipDestinationAddressConditionCapability>
+            <ipAddress>
+                <address>192.168.245.130</address>
+            </ipAddress>
+        </ipDestinationAddressConditionCapability>
+        <policyTypeConditionCapability>
+            <type>main</type>
+        </policyTypeConditionCapability>
+        <acceptActionCapability></acceptActionCapability>
+        <priorityConditionCapability>
+            <priority>2080</priority>
+        </priorityConditionCapability>
+    </rule>
+</policy>

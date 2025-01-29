@@ -1,0 +1,6 @@
+ip xfrm spi 0x100 enc aes128 0x00112233445566778899AABBCCDDEEFF src 192.168.1.2/24 dst 192.168.1.1 proto esp state delete
+ip xfrm spi 0x100 enc aes128 0x00112233445566778899AABBCCDDEEFF src 192.168.1.2/24 dst 192.168.1.1 proto ah state delete
+ip xfrm proto esp spi 0x00000301 src 192.168.1.1 enc aes128 0x00112233445566778899AABBCCDDEEFF dst 192.168.1.2 state add mode tunnel 
+ip xfrm proto esp src 172.16.2.0 mode tunnel dst 172.16.1.0 policy add dir fwd 
+ip xfrm enc aes128(cbc) 0x6aed4975adf006d65c76f63923a6265b dst 192.168.245.130 spi 0x53fa0fdd mode transport proto esp replay-window 32 src 192.168.211.138 state add reqid 16386 
+ip xfrm policy add dst 192.168.245.130 action allow src 192.168.211.138 

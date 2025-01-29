@@ -1,0 +1,13 @@
+dev tun
+keepalive 10 120
+ca ca.crt
+verb 3
+cert server.crt
+data-ciphers aes-128-gcm
+server 10.8.0.0 255.255.255.0
+key serverKey.pem
+port 1194
+group groupName
+proto UDP
+dh dh2048.pem
+user userName

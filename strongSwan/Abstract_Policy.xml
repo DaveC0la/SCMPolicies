@@ -1,0 +1,309 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<policy nsfName="Strongswan"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="Strongswan_language_fake.xsd">
+
+    <rule id="0">
+
+        <ipSourceAddressConditionCapability operator="exactMatch">
+            <capabilityIpValue>
+                <exactMatch>192.168.0.1</exactMatch>
+            </capabilityIpValue>
+        </ipSourceAddressConditionCapability>
+
+        <sourceAuthActionCapability>
+            <method>pubkey</method>
+        </sourceAuthActionCapability>
+
+        <sourceX509CertificateConditionCapability>
+            <path>moonCert.pem</path>
+        </sourceX509CertificateConditionCapability>
+
+        <sourceIdentityConditionCapability>
+            <identity>moon.strongswan.org</identity>
+        </sourceIdentityConditionCapability>
+
+        <destinationAuthActionCapability>
+            <method>pubkey</method>
+        </destinationAuthActionCapability>
+        
+        <sourceSubnetConditionCapability operator="rangeCIDR">
+            <capabilityIpValue>
+                <rangeCIDR>
+                    <address>10.1.0.0</address>
+                    <maskCIDR>16</maskCIDR>
+                </rangeCIDR>
+            </capabilityIpValue>
+        </sourceSubnetConditionCapability>
+
+        <sourceFirewallActionCapability>
+            <choice>/usr/local/libexec/ipsec/_updown</choice>
+        </sourceFirewallActionCapability>
+
+        <channelProtectionConditionCapability>
+            <cipherSuite>
+                <algoEnc>aes128</algoEnc> 
+                <mode>gcm128</mode>
+                <dhgroup>x25519</dhgroup>
+            </cipherSuite>
+        </channelProtectionConditionCapability>
+
+        <exchangeVersionActionCapability>
+            <version>2</version>
+        </exchangeVersionActionCapability>
+
+        <keyMaterialConditionCapability>
+            <encAlgo>aes128</encAlgo>
+            <hashAlgo>sha256</hashAlgo>
+            <dhChoice>x25519</dhChoice>  
+        </keyMaterialConditionCapability>
+        
+    </rule>
+
+    <rule id="1">
+
+        <ipSourceAddressConditionCapability operator="exactMatch">
+            <capabilityIpValue>
+                <exactMatch>192.168.0.100</exactMatch>
+            </capabilityIpValue>
+        </ipSourceAddressConditionCapability>
+
+        <ipDestinationAddressConditionCapability operator="exactMatch">
+            <capabilityIpValue>
+                <exactMatch>192.168.0.1</exactMatch>
+            </capabilityIpValue>
+        </ipDestinationAddressConditionCapability>
+
+        <sourceAuthActionCapability>
+            <method>eap</method>
+            <eapMethod>tls</eapMethod>
+        </sourceAuthActionCapability>
+
+        <sourceX509CertificateConditionCapability>
+            <path>CarolCert.pem</path>
+        </sourceX509CertificateConditionCapability>
+
+        <destinationAuthActionCapability>
+            <method>eap</method>
+            <eapMethod>tls</eapMethod>
+        </destinationAuthActionCapability>
+
+        <destinationIdentityConditionCapability>
+            <identity>"C=CH, O=strongSwan Project, CN=moon.strongswan.org"</identity>
+        </destinationIdentityConditionCapability>
+
+        <sourceSubnetConditionCapability operator="rangeCIDR">
+            <capabilityIpValue>
+                <rangeCIDR>
+                    <address>10.1.0.0</address>
+                    <maskCIDR>16</maskCIDR>
+                </rangeCIDR>
+            </capabilityIpValue>
+        </sourceSubnetConditionCapability>
+
+        <sourceFirewallActionCapability>
+            <choice>/usr/local/libexec/ipsec/_updown</choice>
+        </sourceFirewallActionCapability>
+
+        <channelProtectionConditionCapability>
+            <cipherSuite>
+                <algoEnc>aes128</algoEnc> 
+                <mode>gcm128</mode>
+                <dhgroup>x25519</dhgroup>
+            </cipherSuite>
+        </channelProtectionConditionCapability>
+
+        <exchangeVersionActionCapability>
+            <version>2</version>
+        </exchangeVersionActionCapability>
+
+        <destinationSendCertificateConditionCapability>
+            <choice>no</choice>
+        </destinationSendCertificateConditionCapability>
+
+        <keyMaterialConditionCapability>
+            <encAlgo>aes128</encAlgo>
+            <hashAlgo>sha256</hashAlgo>
+            <dhChoice>x25519</dhChoice>  
+        </keyMaterialConditionCapability>
+
+    </rule>
+
+    <rule id="2">
+
+        <ipSourceAddressConditionCapability operator="exactMatch">
+            <capabilityIpValue>
+                <exactMatch>192.168.0.1</exactMatch>
+            </capabilityIpValue>
+        </ipSourceAddressConditionCapability>
+
+        <ipDestinationAddressConditionCapability operator="exactMatch">
+            <capabilityIpValue>
+                <exactMatch>192.168.0.2</exactMatch>
+            </capabilityIpValue>
+        </ipDestinationAddressConditionCapability>
+
+        <sourceAuthActionCapability>
+            <method>pubkey</method>
+        </sourceAuthActionCapability>
+
+        <sourceX509CertificateConditionCapability>
+            <path>moonCert.pem</path>
+        </sourceX509CertificateConditionCapability>
+
+        <sourceIdentityConditionCapability>
+            <identity>moon.strongswan.org</identity>
+        </sourceIdentityConditionCapability>
+
+        <destinationAuthActionCapability>
+            <method>pubkey</method>
+        </destinationAuthActionCapability>
+
+        <destinationIdentityConditionCapability>
+            <identity>sun.strongswan.org</identity>
+        </destinationIdentityConditionCapability>
+
+        <sourceSubnetConditionCapability operator="rangeCIDR">
+            <capabilityIpValue>
+                <rangeCIDR>
+                    <address>10.1.0.0</address>
+                    <maskCIDR>16</maskCIDR>
+                </rangeCIDR>
+            </capabilityIpValue>
+        </sourceSubnetConditionCapability>
+
+        <destinationSubnetConditionCapability operator="rangeCIDR">
+            <capabilityIpValue>
+                <rangeCIDR>
+                    <address>10.2.0.0</address>
+                    <maskCIDR>16</maskCIDR>
+                </rangeCIDR>
+            </capabilityIpValue>
+        </destinationSubnetConditionCapability>
+
+        <sourceFirewallActionCapability>
+            <choice>/usr/local/libexec/ipsec/_updown</choice>
+        </sourceFirewallActionCapability>
+
+        <lifeTimeConditionCapability>
+            <value>5400</value>
+        </lifeTimeConditionCapability>
+
+        <lifeBytesConditionCapability>
+            <value>500000000</value>
+        </lifeBytesConditionCapability>
+
+        <lifePacketsConditionCapability>
+            <value>1000000</value>
+        </lifePacketsConditionCapability>
+
+        <channelProtectionConditionCapability>
+            <cipherSuite>
+                <algoEnc>aes128</algoEnc> 
+                <mode>gcm128</mode>
+                <dhgroup>x25519</dhgroup>
+            </cipherSuite>
+        </channelProtectionConditionCapability>
+
+        <exchangeVersionActionCapability>
+            <version>2</version>
+        </exchangeVersionActionCapability>
+
+        <mobikeConditionCapability>
+            <choice>no</choice>
+        </mobikeConditionCapability>
+
+        <reauthenticationConditionCapability>
+            <time>10800</time>
+        </reauthenticationConditionCapability>
+
+        <keyMaterialConditionCapability>
+            <encAlgo>aes128</encAlgo>
+            <hashAlgo>sha256</hashAlgo>
+            <dhChoice>x25519</dhChoice>  
+        </keyMaterialConditionCapability>
+
+    </rule>
+
+    <rule id="3">
+
+        <ipSourceAddressConditionCapability operator="exactMatch">
+            <capabilityIpValue>
+                <exactMatch>192.168.0.1</exactMatch>
+            </capabilityIpValue>
+        </ipSourceAddressConditionCapability>
+
+        <ipDestinationAddressConditionCapability operator="exactMatch">
+            <capabilityIpValue>
+                <exactMatch>192.168.0.2</exactMatch>
+            </capabilityIpValue>
+        </ipDestinationAddressConditionCapability>
+
+        <sourceAuthActionCapability>
+            <method>pubkey</method>
+        </sourceAuthActionCapability>
+
+        <sourceX509CertificateConditionCapability>
+            <path>moonCert.pem</path>
+        </sourceX509CertificateConditionCapability>
+
+        <sourceIdentityConditionCapability>
+            <identity>moon.strongswan.org</identity>
+        </sourceIdentityConditionCapability>
+
+        <destinationAuthActionCapability>
+            <method>pubkey</method>
+        </destinationAuthActionCapability>
+
+        <destinationIdentityConditionCapability>
+            <identity>sun.strongswan.org</identity>
+        </destinationIdentityConditionCapability>
+
+        <sourceFirewallActionCapability>
+            <choice>/usr/local/libexec/ipsec/_updown</choice>
+        </sourceFirewallActionCapability>
+
+        <lifeTimeConditionCapability>
+            <value>5400</value>
+        </lifeTimeConditionCapability>
+
+        <lifeBytesConditionCapability>
+            <value>500000000</value>
+        </lifeBytesConditionCapability>
+
+        <lifePacketsConditionCapability>
+            <value>1000000</value>
+        </lifePacketsConditionCapability>
+
+        <channelProtectionConditionCapability>
+            <cipherSuite>
+                <algoEnc>aes128</algoEnc> 
+                <mode>gcm128</mode>
+                <dhgroup>x25519</dhgroup>
+            </cipherSuite>
+        </channelProtectionConditionCapability>
+
+        <encapsulationTechniqueActionCapability>
+            <mode>transport</mode>
+        </encapsulationTechniqueActionCapability>
+
+        <exchangeVersionActionCapability>
+            <version>2</version>
+        </exchangeVersionActionCapability>
+
+        <mobikeConditionCapability>
+            <choice>no</choice>
+        </mobikeConditionCapability>
+
+        <reauthenticationConditionCapability>
+            <time>10800</time>
+        </reauthenticationConditionCapability>
+
+        <keyMaterialConditionCapability>
+            <encAlgo>aes128</encAlgo>
+            <hashAlgo>sha256</hashAlgo>
+            <dhChoice>x25519</dhChoice>  
+        </keyMaterialConditionCapability>
+
+    </rule>
+
+</policy>

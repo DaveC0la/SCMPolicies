@@ -1,0 +1,101 @@
+ike-name-placeholder {
+	local {
+		auth=pubkey
+		id=moon.strongswan.org
+		certs=moonCert.pem
+	}
+	children {
+		child-name-placeholder {
+			esp_proposals=aes128gcm128-x25519
+			updown=/usr/local/libexec/ipsec/_updown iptables
+			local_ts=10.1.0.0/16
+		}
+	}
+	proposals=aes128-sha256-x25519
+	version=2
+	remote {
+		auth=pubkey
+	}
+	local_addrs=192.168.0.1	
+}
+
+ike-name-placeholder {
+	local_addrs=192.168.0.100
+	send_certreq=no
+	proposals=aes128-sha256-x25519
+	remote {
+		auth=eap-tls
+		id=null
+	}
+	remote_addrs=192.168.0.1
+	version=2
+	local {
+		auth=eap-tls
+		certs=CarolCert.pem
+	}
+	children {
+		child-name-placeholder {
+			esp_proposals=aes128gcm128-x25519
+			updown=/usr/local/libexec/ipsec/_updown iptables
+			local_ts=10.1.0.0/16
+		}
+	} 
+}
+
+ike-name-placeholder {
+	reauth_time=10800
+	mobike=no
+	version=2
+	remote_addrs=192.168.0.2
+	remote {
+		auth=pubkey
+		id=sun.strongswan.org
+	}
+	proposals=aes128-sha256-x25519
+	local_addrs=192.168.0.1
+	local {
+		auth=pubkey
+		id=moon.strongswan.org
+		certs=moonCert.pem
+	}
+	children {
+		child-name-placeholder {
+			esp_proposals=aes128gcm128-x25519
+			remote_ts=10.2.0.0/16
+			rekey_bytes=500000000
+			rekey_packets=1000000
+			rekey_time=5400
+			updown=/usr/local/libexec/ipsec/_updown iptables
+			local_ts=10.1.0.0/16
+		}
+	}	 
+}
+
+ike-name-placeholder {
+	reauth_time=10800
+	children {
+		child-name-placeholder {
+			esp_proposals=aes128gcm128-x25519
+			mode=transport
+			rekey_bytes=500000000
+			rekey_packets=1000000
+			rekey_time=5400
+			updown=/usr/local/libexec/ipsec/_updown iptables
+		}
+	}
+	mobike=no
+	local {
+		auth=pubkey
+		id=moon.strongswan.org
+		certs=moonCert.pem
+	}
+	proposals=aes128-sha256-x25519
+	remote_addrs=192.168.0.2
+	remote {
+		auth=pubkey
+		id=sun.strongswan.org
+	}
+	local_addrs=192.168.0.1
+	version=2
+}
+

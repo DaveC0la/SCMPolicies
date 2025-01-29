@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<policy nsfName="OpenVPN"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="OpenVPN_language_fake.xsd">
+
+    <rule id="0">
+        <sourcePortConditionCapability>
+            <port>
+                <value>1194</value>
+            </port>
+        </sourcePortConditionCapability>
+
+        <connTrackProtocolConditionCapability>
+            <proto>
+                <protocolTypeName>UDP</protocolTypeName>
+            </proto> 
+        </connTrackProtocolConditionCapability>
+
+        <tunDeviceConditionCapability>
+            <device />
+        </tunDeviceConditionCapability>
+
+        <certificateAutorityConditionCapability>
+            <name>ca.crt</name>
+        </certificateAutorityConditionCapability>
+
+        <x509CertificateConditionCapability>
+            <path>server.crt</path>
+        </x509CertificateConditionCapability>
+
+        <keyFileConditionCapability>
+            <file>serverKey.pem</file>
+        </keyFileConditionCapability>
+
+        <dHFileConditionCapability>
+            <file>dh2048.pem</file>
+        </dHFileConditionCapability>
+
+        <channelProtectionConditionCapability>
+            <cipherSuite>
+                <algoEnc>aes</algoEnc> 
+                <algoStrength>128</algoStrength>
+                <mode>gcm</mode>
+            </cipherSuite>
+        </channelProtectionConditionCapability>
+
+        <serverRoleConditionCapability>
+            <subnet>
+                <address>10.8.0.0</address>
+                <mask>255.255.255.0</mask>
+            </subnet>
+        </serverRoleConditionCapability>
+
+        <connKeepAliveConditionCapability>
+            <interval>10</interval>
+            <timeout>120</timeout>
+        </connKeepAliveConditionCapability>
+
+        <sourceUserConditionCapability>
+            <user>userName</user>  
+        </sourceUserConditionCapability>
+
+        <sourceGroupConditionCapability>
+            <group>groupName</group>  
+        </sourceGroupConditionCapability>
+
+        <logVerbosityConditionCapability>
+            <level>3</level>  
+        </logVerbosityConditionCapability>
+    </rule>
+
+</policy>

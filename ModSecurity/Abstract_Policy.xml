@@ -1,0 +1,307 @@
+<policy nsfName="ModSecurity" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="language_modSecurity.xsd">
+
+	<rule id="VAL-3">
+		<variableConditionCapability>
+			<variableConditionName>test</variableConditionName>
+			<variableConditionValue>1000</variableConditionValue>
+		</variableConditionCapability>
+		<setVariableActionCapability>
+			<setVariableScope>scope</setVariableScope>
+			<setVariableName>name</setVariableName>
+			<setVariableValue>
+				<left>
+					<value>1</value>
+				</left>
+				<right>
+					<left>
+						<variableName>name1</variableName>
+					</left>
+					<right>
+						<variableName>name2</variableName>
+					</right>
+					<expressionOperator>-</expressionOperator>
+				</right>
+				<expressionOperator>/</expressionOperator>
+			</setVariableValue>
+		</setVariableActionCapability>
+		<acceptActionCapability/>
+	</rule>
+	<rule id="VAL-1">
+		<httpMethodConditionCapability operator="exactMatch">
+			<capabilityValue>
+				<exactMatch>POST</exactMatch>
+			</capabilityValue>
+		</httpMethodConditionCapability>
+		<rejectActionCapability />
+		<idInfoCapability>
+			<ruleId>001</ruleId>
+		</idInfoCapability>
+		<versionInfoCapability>
+			<version>1.0</version>
+		</versionInfoCapability>
+		<httpReqArgsConditionCapability operator="exactMatch">
+			<capabilityValue>
+				<exactMatch>test</exactMatch>
+			</capabilityValue>
+		</httpReqArgsConditionCapability>
+	</rule>
+	<rule id="VAL-2">
+		<httpReqArgsConditionCapability operator="exactMatch">
+			<capabilityValue>
+				<exactMatch>aaa</exactMatch>
+			</capabilityValue>
+		</httpReqArgsConditionCapability>
+		<acceptActionCapability />
+		<idInfoCapability>
+			<ruleId>002</ruleId>
+		</idInfoCapability>
+	</rule>
+
+	<rule id="111">
+		<filesCombinedSizeConditionCapability operator="exactMatch">
+			<capabilityValue>
+				<exactMatch>1</exactMatch>
+			</capabilityValue>
+		</filesCombinedSizeConditionCapability>
+		<httpReqConditionCapability operator="exactMatch">
+			<capabilityValue>
+				<exactMatch>22</exactMatch>
+			</capabilityValue>
+		</httpReqConditionCapability>
+		<ipDestinationAddressConditionCapability operator="exactMatch">
+			<capabilityValue>
+				<exactMatch>43</exactMatch>
+			</capabilityValue>
+		</ipDestinationAddressConditionCapability>
+		<rejectActionCapability />
+	</rule>
+
+	<rule id="3">
+		<httpMethodConditionCapability operator="exactMatch">
+			<capabilityValue>
+				<exactMatch>GET</exactMatch>
+			</capabilityValue>
+		</httpMethodConditionCapability>
+		<httpReqArgsConditionCapability operator="exactMatch">
+			<capabilityValue>
+				<exactMatch>AAA</exactMatch>
+			</capabilityValue>
+		</httpReqArgsConditionCapability>
+		<filesCombinedSizeConditionCapability operator="exactMatch">
+			<capabilityValue>
+				<exactMatch>1</exactMatch>
+			</capabilityValue>
+		</filesCombinedSizeConditionCapability>
+		<httpReqConditionCapability operator="exactMatch">
+			<capabilityValue>
+				<exactMatch>1</exactMatch>
+			</capabilityValue>
+		</httpReqConditionCapability>
+		<ipDestinationAddressConditionCapability operator="exactMatch">
+			<capabilityValue>
+				<exactMatch>1</exactMatch>
+			</capabilityValue>
+		</ipDestinationAddressConditionCapability>
+		<rejectActionCapability />
+	</rule>
+
+	<rule id="1005">
+		<variableConditionCapability>
+			<variableConditionName>condition</variableConditionName>
+			<variableConditionValue>1000</variableConditionValue>
+		</variableConditionCapability>
+		<httpMethodConditionCapability operator="exactMatch">
+			<capabilityValue>
+				<exactMatch>GET</exactMatch>
+			</capabilityValue>
+		</httpMethodConditionCapability>
+		<setVariableActionCapability>
+			<setVariableName>name</setVariableName>
+			<setVariableValue>
+				<left>
+					<value>1</value>
+				</left>
+				<right>
+					<left>
+						<variableName>name1</variableName>
+					</left>
+					<right>
+						<variableName>name2</variableName>
+					</right>
+					<expressionOperator>-</expressionOperator>
+				</right>
+				<expressionOperator>/</expressionOperator>
+			</setVariableValue>
+		</setVariableActionCapability>
+		<rejectActionCapability/>
+	</rule>
+
+	<rule id="1004">
+		<variableConditionCapability>
+			<variableConditionName>condition</variableConditionName>
+			<variableConditionValue>1000</variableConditionValue>
+		</variableConditionCapability>
+		<setVariableActionCapability>
+			<setVariableName>name</setVariableName>
+			<setVariableValue>
+				<left>
+					<value>1</value>
+				</left>
+				<right>
+					<left>
+						<variableName>name1</variableName>
+					</left>
+					<right>
+						<variableName>name2</variableName>
+					</right>
+					<expressionOperator>-</expressionOperator>
+				</right>
+				<expressionOperator>/</expressionOperator>
+			</setVariableValue>
+		</setVariableActionCapability>
+	</rule>
+
+	<rule id="1003">
+		<variableConditionCapability>
+			<variableConditionName>var1</variableConditionName>
+			<variableName>var2</variableName>
+		</variableConditionCapability>
+		<setVariableActionCapability>
+			<setVariableScope>scope</setVariableScope>
+			<setVariableName>name</setVariableName>
+			<setVariableValue>
+				<left>
+					<value>1</value>
+				</left>
+				<right>
+					<left>
+						<variableName>name1</variableName>
+					</left>
+					<right>
+						<variableName>name2</variableName>
+					</right>
+					<expressionOperator>-</expressionOperator>
+				</right>
+				<expressionOperator>/</expressionOperator>
+			</setVariableValue>
+		</setVariableActionCapability>
+	</rule>
+
+	<rule id="1002">
+		<httpMethodConditionCapability operator="exactMatch">
+			<capabilityValue>
+				<exactMatch>POST</exactMatch>
+			</capabilityValue>
+		</httpMethodConditionCapability>
+		<setVariableActionCapability>
+			<setVariableName>name</setVariableName>
+			<setVariableValue>
+				<left></left>
+				<right>
+					<variableName>name1</variableName>
+				</right>
+				<expressionOperator>+</expressionOperator>
+			</setVariableValue>
+		</setVariableActionCapability>
+	</rule>
+
+	<rule id="1">
+		<httpMethodConditionCapability operator="exactMatch">
+			<capabilityValue>
+				<exactMatch>POST</exactMatch>
+			</capabilityValue>
+		</httpMethodConditionCapability>
+		<httpReqArgsConditionCapability operator="exactMatch">
+			<capabilityValue>
+				<exactMatch>AAA</exactMatch>
+			</capabilityValue>
+		</httpReqArgsConditionCapability>
+	</rule>
+
+	<rule id="5">
+		<httpMethodConditionCapability operator="exactMatch">
+			<capabilityValue>
+				<exactMatch>GET</exactMatch>
+			</capabilityValue>
+		</httpMethodConditionCapability>
+	</rule>
+
+	<rule id="6">
+		<httpReqConditionCapability operator="exactMatch">
+			<capabilityValue>
+				<exactMatch>test</exactMatch>
+			</capabilityValue>
+		</httpReqConditionCapability>
+	</rule>
+
+	<rule id="7">
+		<filesCombinedSizeConditionCapability>
+			<variableName>var1</variableName>
+		</filesCombinedSizeConditionCapability>
+	</rule>
+
+	<rule id="8">
+		<ipDestinationAddressConditionCapability operator="exactMatch">
+			<capabilityValue>
+				<exactMatch>1.1.1.1</exactMatch>
+			</capabilityValue>
+		</ipDestinationAddressConditionCapability>
+		<passActionCapability/>
+		<noAuditlogInfoCapability/>
+		<idInfoCapability>
+			<ruleId>1</ruleId>
+		</idInfoCapability>
+	</rule>
+
+	<rule id="11">
+		<httpReqHdrConditionCapability>
+			<variableScope>a2</variableScope>
+			<variableName>a3</variableName>
+		</httpReqHdrConditionCapability>
+		<passActionCapability/>
+	</rule>
+
+	<rule id="931130">
+		<httpReqArgsConditionCapability operator="exactMatch">
+			<capabilityValue>
+				<exactMatch>(?i)(?:(?:url|jar):).....//(?:[^@]+@)?([^/]*)</exactMatch>
+			</capabilityValue>
+		</httpReqArgsConditionCapability>
+		<ipDestinationAddressConditionCapability operator="exactMatch">
+			<capabilityValue>
+				<exactMatch>1.1.1.1</exactMatch>
+			</capabilityValue>
+		</ipDestinationAddressConditionCapability>
+		<idInfoCapability>
+			<ruleId>931130</ruleId>
+		</idInfoCapability>
+		<phaseInfoCapability>
+			<phase>1</phase>
+		</phaseInfoCapability>
+		<rejectActionCapability/>
+		<messageInfoCapability>
+			<message>Possible Remote File Inclusion (RFI) Attack: Off-Domain Reference/Link</message>
+		</messageInfoCapability>
+		<logdataInfoCapability>
+			<logdata>Logdata</logdata>
+		</logdataInfoCapability>
+		<tagInfoCapability>
+			<tag>application-multi</tag>
+		</tagInfoCapability>
+		<versionInfoCapability>
+			<version>OWASP_CRS/4.7.0-dev</version>
+		</versionInfoCapability>
+		<setVariableActionCapability>
+			<setVariableName>rfi_parameter_0</setVariableName>
+			<setVariableValue>
+				<left></left>
+				<right>
+					<value>1</value>
+				</right>
+				<expressionOperator>.</expressionOperator>
+			</setVariableValue>
+		</setVariableActionCapability>
+	</rule>
+
+</policy>
+    
