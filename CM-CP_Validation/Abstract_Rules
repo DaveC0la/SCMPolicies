@@ -1,0 +1,191 @@
+<!-- RULE FOR GATEWAY A -->
+<rule id="0">
+
+        <exchangeVersionActionCapability>
+            <version>2</version>
+        </exchangeVersionActionCapability>
+
+        <keyMaterialConditionCapability>
+            <aeadAlgo>aes256</aeadAlgo> 
+            <aeadMode>gcm16</aeadMode>
+            <hashAlgo>sha256</hashAlgo>
+            <dhChoice>ecp256</dhChoice>
+        </keyMaterialConditionCapability>
+
+        <ipSourceAddressConditionCapability operator="exactMatch">
+            <capabilityIpValue>
+                <exactMatch>192.0.2.1</exactMatch>
+            </capabilityIpValue>
+        </ipSourceAddressConditionCapability>
+
+        <ipDestinationAddressConditionCapability operator="exactMatch">
+            <capabilityIpValue>
+                <exactMatch>192.0.2.2</exactMatch>
+            </capabilityIpValue>
+        </ipDestinationAddressConditionCapability>
+
+        <fragmentActionCapability>
+            <negated>true</negated>
+        </fragmentActionCapability>
+
+        <dpdDelayConditionCapability>
+            <time>1</time>
+            <timeUnit>m</timeUnit>
+        </dpdDelayConditionCapability>
+
+        <mobikeConditionCapability>
+            <choice>yes</choice>
+        </mobikeConditionCapability>
+
+        <typeOfEncapActionCapability>
+            <encap>yes</encap>
+        </typeOfEncapActionCapability>
+
+        <sourceAuthActionCapability>
+            <method>pubkey</method>
+        </sourceAuthActionCapability>
+
+        <sourceX509CertificateConditionCapability>
+            <path>gwA.crt</path>
+        </sourceX509CertificateConditionCapability>
+
+        <sourceIdentityConditionCapability>
+            <identity>gwA</identity>
+        </sourceIdentityConditionCapability>
+
+        <destinationAuthActionCapability>
+            <method>pubkey</method>
+        </destinationAuthActionCapability>
+
+        <destinationIdentityConditionCapability>
+            <identity>gwB</identity>
+        </destinationIdentityConditionCapability>
+
+        <sourceSubnetConditionCapability operator="rangeCIDR">
+            <capabilityIpValue>
+                <rangeCIDR>
+                    <address>10.0.1.0</address>
+                    <maskCIDR>24</maskCIDR>
+                </rangeCIDR>
+            </capabilityIpValue>
+        </sourceSubnetConditionCapability>
+
+        <destinationSubnetConditionCapability operator="rangeCIDR">
+            <capabilityIpValue>
+                <rangeCIDR>
+                    <address>10.0.2.0</address>
+                    <maskCIDR>24</maskCIDR>
+                </rangeCIDR>
+            </capabilityIpValue>
+        </destinationSubnetConditionCapability>
+
+        <channelProtectionConditionCapability>
+            <cipherSuite>
+                <algoEnc>aes256</algoEnc> 
+                <mode>gcm16</mode>
+                <algoHash>sha256</algoHash>
+                <dhgroup>ecp256</dhgroup>
+            </cipherSuite>
+        </channelProtectionConditionCapability>
+
+        <connectionStartActionCapability>
+            <action>trap</action>
+        </connectionStartActionCapability>
+
+    </rule>
+
+    <!-- RULE FOR GATEWAY B -->
+    <rule id="1">
+
+        <exchangeVersionActionCapability>
+            <version>2</version>
+        </exchangeVersionActionCapability>
+
+        <keyMaterialConditionCapability>
+            <aeadAlgo>aes256</aeadAlgo> 
+            <aeadMode>gcm16</aeadMode>
+            <hashAlgo>sha256</hashAlgo>
+            <dhChoice>ecp256</dhChoice>
+        </keyMaterialConditionCapability>
+
+        <ipSourceAddressConditionCapability operator="exactMatch">
+            <capabilityIpValue>
+                <exactMatch>192.0.2.2</exactMatch>
+            </capabilityIpValue>
+        </ipSourceAddressConditionCapability>
+
+        <ipDestinationAddressConditionCapability operator="exactMatch">
+            <capabilityIpValue>
+                <exactMatch>192.0.2.1</exactMatch>
+            </capabilityIpValue>
+        </ipDestinationAddressConditionCapability>
+
+        <fragmentActionCapability>
+            <negated>true</negated>
+        </fragmentActionCapability>
+
+        <dpdDelayConditionCapability>
+            <time>1</time>
+            <timeUnit>m</timeUnit>
+        </dpdDelayConditionCapability>
+
+        <mobikeConditionCapability>
+            <choice>yes</choice>
+        </mobikeConditionCapability>
+
+        <typeOfEncapActionCapability>
+            <encap>yes</encap>
+        </typeOfEncapActionCapability>
+
+        <sourceAuthActionCapability>
+            <method>pubkey</method>
+        </sourceAuthActionCapability>
+
+        <sourceX509CertificateConditionCapability>
+            <path>gwB.crt</path>
+        </sourceX509CertificateConditionCapability>
+
+        <sourceIdentityConditionCapability>
+            <identity>gwB</identity>
+        </sourceIdentityConditionCapability>
+
+        <destinationAuthActionCapability>
+            <method>pubkey</method>
+        </destinationAuthActionCapability>
+
+        <destinationIdentityConditionCapability>
+            <identity>gwA</identity>
+        </destinationIdentityConditionCapability>
+
+        <sourceSubnetConditionCapability operator="rangeCIDR">
+            <capabilityIpValue>
+                <rangeCIDR>
+                    <address>10.0.2.0</address>
+                    <maskCIDR>24</maskCIDR>
+                </rangeCIDR>
+            </capabilityIpValue>
+        </sourceSubnetConditionCapability>
+
+        <destinationSubnetConditionCapability operator="rangeCIDR">
+            <capabilityIpValue>
+                <rangeCIDR>
+                    <address>10.0.1.0</address>
+                    <maskCIDR>24</maskCIDR>
+                </rangeCIDR>
+            </capabilityIpValue>
+        </destinationSubnetConditionCapability>
+
+        <channelProtectionConditionCapability>
+            <cipherSuite>
+                <algoEnc>aes256</algoEnc> 
+                <mode>gcm16</mode>
+                <algoHash>sha256</algoHash>
+                <dhgroup>ecp256</dhgroup>
+            </cipherSuite>
+        </channelProtectionConditionCapability>
+
+        <connectionStartActionCapability>
+            <action>trap</action>
+        </connectionStartActionCapability>
+
+    </rule>
