@@ -1,0 +1,72 @@
+acl myacl0arp arp AC:C1:21:A2:44:A3
+acl myacl0srcdomain srcdomain .foo.com
+acl myacl0dst dst 10.3.3.24
+acl myacl0src src 192.168.1.0
+http_access deny myacl0src myacl0dst myacl0arp myacl0srcdomain
+
+acl myacl1src src 192.168.1.1 192.168.1.2 192.168.1.0/255.255.255.0 192.168.1.0/24
+acl myacl1port port 80
+http_access deny myacl1src myacl1port
+
+acl myacl2src src 192.168.1.0-192.168.1.6
+acl myacl2srcdomain srcdomain www..*facebook?.com
+acl myacl2port port 10 20 30
+http_access deny myacl2src myacl2srcdomain myacl2port
+
+acl myacl3src src 203.0.113.0/24
+acl myacl3myip myip 198.0.113.0/24
+acl myacl3srcdomain srcdomain .foo.com google.com www.facebook.com
+acl myacl3time time A
+http_access deny myacl3src myacl3myip myacl3srcdomain myacl3time
+
+acl myacl4dst_as dst_as 10 20 30
+acl myacl4peername peername mypeercache
+acl myacl4time time 12:28-13:17
+acl myacl4url_regex url_regex ^http://www\..*\.com$
+http_access deny myacl4dst_as myacl4peername myacl4time myacl4url_regex
+
+acl myacl5src_as src_as 80
+acl myacl5time time S 00:28-02:38
+acl myacl5urlpath_regex urlpath_regex \.gif$
+acl myacl5myport myport 90
+acl myacl5myportname myportname myport0
+http_access deny myacl5src_as myacl5time myacl5urlpath_regex myacl5myport myacl5myportname
+
+acl myacl6time time S 00:28-02:38
+acl myacl6myportname myportname myport0
+acl myacl6proto proto HTTP
+acl myacl6method method DELETE
+acl myacl6http_status http_status 200
+http_access deny myacl6time myacl6myportname myacl6proto myacl6method myacl6http_status
+
+acl myacl7myportname myportname myport0
+acl myacl7proto proto HTTP
+acl myacl7browser browser chrome
+acl myacl7referer_regex referer_regex referer.*9
+acl myacl7ident ident uname9
+acl myacl7proxy_auth proxy_auth uname.*9_pass.*
+acl myacl7snmp_community snmp_community uname9_pass9
+acl myacl7maxconn maxconn 3
+http_access deny myacl7myportname myacl7proto myacl7browser myacl7referer_regex myacl7ident myacl7proxy_auth myacl7snmp_community myacl7maxconn
+
+acl myacl8proto proto HTTP
+acl myacl8ident ident uname[o]?9
+acl myacl8proxy_auth proxy_auth uname9_pass
+acl myacl8maxconn maxconn 4
+acl myacl8max_user_ip max_user_ip 2
+acl myacl8req_mime_type req_mime_type popo_mime
+acl myacl8req_header req_header hdr.*
+http_access deny myacl8proto myacl8ident myacl8proxy_auth myacl8maxconn myacl8max_user_ip myacl8req_mime_type myacl8req_header
+
+acl myacl9proto proto HTTP
+acl myacl9rep_mime_type rep_mime_type mime.*?
+acl myacl9rep_header rep_header hdr
+acl myacl9ca_cert ca_cert C This O Is OU My CN CA
+http_access deny myacl9proto myacl9rep_mime_type myacl9rep_header myacl9ca_cert
+
+acl myacl10proto proto HTTP
+acl myacl10rep_header rep_header hdr
+acl myacl10user_cert user_cert C C_01
+http_access deny myacl10proto myacl10rep_header myacl10user_cert
+
+http_access allow all
