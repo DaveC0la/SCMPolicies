@@ -1,6 +1,6 @@
 <policy nsfName="ModSecurity" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="language_modSecurity.xsd">
 
-	<rule id="VAL-3">
+	<rule id="1">
 		<variableConditionCapability>
 			<variableConditionName>test</variableConditionName>
 			<variableConditionValue>1000</variableConditionValue>
@@ -26,7 +26,8 @@
 		</setVariableActionCapability>
 		<acceptActionCapability/>
 	</rule>
-	<rule id="VAL-1">
+
+	<rule id="2">
 		<httpMethodConditionCapability operator="exactMatch">
 			<capabilityValue>
 				<exactMatch>POST</exactMatch>
@@ -45,7 +46,8 @@
 			</capabilityValue>
 		</httpReqArgsConditionCapability>
 	</rule>
-	<rule id="VAL-2">
+
+	<rule id="3">
 		<httpReqArgsConditionCapability operator="exactMatch">
 			<capabilityValue>
 				<exactMatch>aaa</exactMatch>
@@ -57,7 +59,7 @@
 		</idInfoCapability>
 	</rule>
 
-	<rule id="111">
+	<rule id="4">
 		<filesCombinedSizeConditionCapability operator="exactMatch">
 			<capabilityValue>
 				<exactMatch>1</exactMatch>
@@ -76,7 +78,7 @@
 		<rejectActionCapability />
 	</rule>
 
-	<rule id="3">
+	<rule id="5">
 		<httpMethodConditionCapability operator="exactMatch">
 			<capabilityValue>
 				<exactMatch>GET</exactMatch>
@@ -105,7 +107,7 @@
 		<rejectActionCapability />
 	</rule>
 
-	<rule id="1005">
+	<rule id="6">
 		<variableConditionCapability>
 			<variableConditionName>condition</variableConditionName>
 			<variableConditionValue>1000</variableConditionValue>
@@ -136,7 +138,7 @@
 		<rejectActionCapability/>
 	</rule>
 
-	<rule id="1004">
+	<rule id="7">
 		<variableConditionCapability>
 			<variableConditionName>condition</variableConditionName>
 			<variableConditionValue>1000</variableConditionValue>
@@ -161,7 +163,7 @@
 		</setVariableActionCapability>
 	</rule>
 
-	<rule id="1003">
+	<rule id="8">
 		<variableConditionCapability>
 			<variableConditionName>var1</variableConditionName>
 			<variableName>var2</variableName>
@@ -187,7 +189,7 @@
 		</setVariableActionCapability>
 	</rule>
 
-	<rule id="1002">
+	<rule id="9">
 		<httpMethodConditionCapability operator="exactMatch">
 			<capabilityValue>
 				<exactMatch>POST</exactMatch>
@@ -205,7 +207,7 @@
 		</setVariableActionCapability>
 	</rule>
 
-	<rule id="1">
+	<rule id="10">
 		<httpMethodConditionCapability operator="exactMatch">
 			<capabilityValue>
 				<exactMatch>POST</exactMatch>
@@ -218,7 +220,7 @@
 		</httpReqArgsConditionCapability>
 	</rule>
 
-	<rule id="5">
+	<rule id="11">
 		<httpMethodConditionCapability operator="exactMatch">
 			<capabilityValue>
 				<exactMatch>GET</exactMatch>
@@ -226,7 +228,7 @@
 		</httpMethodConditionCapability>
 	</rule>
 
-	<rule id="6">
+	<rule id="12">
 		<httpReqConditionCapability operator="exactMatch">
 			<capabilityValue>
 				<exactMatch>test</exactMatch>
@@ -234,13 +236,13 @@
 		</httpReqConditionCapability>
 	</rule>
 
-	<rule id="7">
+	<rule id="13">
 		<filesCombinedSizeConditionCapability>
 			<variableName>var1</variableName>
 		</filesCombinedSizeConditionCapability>
 	</rule>
 
-	<rule id="8">
+	<rule id="14">
 		<ipDestinationAddressConditionCapability operator="exactMatch">
 			<capabilityValue>
 				<exactMatch>1.1.1.1</exactMatch>
@@ -253,7 +255,7 @@
 		</idInfoCapability>
 	</rule>
 
-	<rule id="11">
+	<rule id="15">
 		<httpReqHdrConditionCapability>
 			<variableScope>a2</variableScope>
 			<variableName>a3</variableName>
@@ -261,7 +263,7 @@
 		<passActionCapability/>
 	</rule>
 
-	<rule id="931130">
+	<rule id="16">
 		<httpReqArgsConditionCapability operator="exactMatch">
 			<capabilityValue>
 				<exactMatch>(?i)(?:(?:url|jar):).....//(?:[^@]+@)?([^/]*)</exactMatch>
@@ -304,4 +306,3 @@
 	</rule>
 
 </policy>
-    
